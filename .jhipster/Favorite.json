@@ -1,0 +1,35 @@
+{
+  "name": "Favorite",
+  "fields": [
+    {
+      "fieldName": "creationDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "favorite",
+      "relationshipName": "user",
+      "otherEntityField": "login"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "resource",
+      "otherEntityRelationshipName": "favorite",
+      "relationshipName": "resource",
+      "otherEntityField": "id"
+    }
+  ],
+  "entityTableName": "favorite",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20220102001447"
+}

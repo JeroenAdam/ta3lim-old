@@ -1,0 +1,30 @@
+{
+  "name": "Votes",
+  "fields": [],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "votes",
+      "relationshipName": "user",
+      "otherEntityField": "login"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "resource",
+      "otherEntityRelationshipName": "votes",
+      "relationshipName": "resource",
+      "otherEntityField": "id"
+    }
+  ],
+  "entityTableName": "votes",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20220102122205"
+}

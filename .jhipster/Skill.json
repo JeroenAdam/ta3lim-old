@@ -1,0 +1,33 @@
+{
+  "name": "Skill",
+  "fields": [
+    {
+      "fieldName": "label",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "creationDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "resource",
+      "otherEntityRelationshipName": "skills",
+      "relationshipName": "resource",
+      "otherEntityField": "id",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "skill",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20220102112137"
+}

@@ -1,0 +1,35 @@
+{
+  "name": "File",
+  "fields": [
+    {
+      "fieldName": "label",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "minlength"],
+      "fieldValidateRulesMinlength": "3"
+    },
+    {
+      "fieldName": "file",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "resource",
+      "otherEntityRelationshipName": "file",
+      "relationshipName": "resource",
+      "ownerSide": true
+    }
+  ],
+  "entityTableName": "file",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211225153044"
+}

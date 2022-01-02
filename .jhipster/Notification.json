@@ -1,0 +1,49 @@
+{
+  "name": "Notification",
+  "fields": [
+    {
+      "fieldName": "creationDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "notificationDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "notificationType",
+      "fieldType": "NotificationType",
+      "fieldValues": "UNREAD_MESSAGES (Unread messages),ACCEPTED (Submission accepted),REJECTED (Submission rejected),NONE (None)"
+    },
+    {
+      "fieldName": "notificationText",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "isDelivered",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "isDeleted",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "notification",
+      "relationshipName": "user",
+      "otherEntityField": "login"
+    }
+  ],
+  "entityTableName": "notification",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20220101234800"
+}

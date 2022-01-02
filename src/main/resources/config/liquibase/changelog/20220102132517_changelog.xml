@@ -1,0 +1,204 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+    <changeSet author="Adam (generated)" id="1641129964888-1">
+        <createTable tableName="favorite">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="favoritePK"/>
+            </column>
+            <column name="creation_date" type="date"/>
+            <column name="resource_id" type="BIGINT"/>
+            <column name="user_id" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Adam (generated)" id="1641129964888-2">
+        <createTable tableName="file">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="filePK"/>
+            </column>
+            <column name="file" type="BLOB"/>
+            <column name="file_content_type" type="VARCHAR(255)"/>
+            <column name="label" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="resource_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Adam (generated)" id="1641129964888-3">
+        <createTable tableName="message">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="messagePK"/>
+            </column>
+            <column name="creation_date" type="date"/>
+            <column name="is_delivered" type="BOOLEAN"/>
+            <column name="message_text" type="VARCHAR(255)"/>
+            <column name="receiver_id" type="VARCHAR(255)"/>
+            <column name="sender_id" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Adam (generated)" id="1641129964888-4">
+        <createTable tableName="notification">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="notificationPK"/>
+            </column>
+            <column name="creation_date" type="date"/>
+            <column name="is_deleted" type="BOOLEAN"/>
+            <column name="is_delivered" type="BOOLEAN"/>
+            <column name="notification_date" type="date"/>
+            <column name="notification_text" type="VARCHAR(255)"/>
+            <column name="notification_type" type="VARCHAR(255)"/>
+            <column name="user_id" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Adam (generated)" id="1641129964888-5">
+        <createTable tableName="rel_resource__skills">
+            <column name="resource_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="skills_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Adam (generated)" id="1641129964888-6">
+        <createTable tableName="rel_resource__topics">
+            <column name="resource_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="topics_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Adam (generated)" id="1641129964888-7">
+        <createTable tableName="resource">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="resourcePK"/>
+            </column>
+            <column name="activated" type="BOOLEAN"/>
+            <column name="ange_rage" type="VARCHAR(255)"/>
+            <column name="approved_by" type="VARCHAR(255)"/>
+            <column name="author" type="VARCHAR(255)"/>
+            <column name="creation_date" type="date"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="file" type="BLOB"/>
+            <column name="file_content_type" type="VARCHAR(255)"/>
+            <column name="last_updated" type="date"/>
+            <column name="resource_type" type="VARCHAR(255)"/>
+            <column name="title" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="url" type="VARCHAR(255)"/>
+            <column name="views" type="BIGINT"/>
+            <column name="votes" type="BIGINT"/>
+            <column name="subject_id" type="BIGINT"/>
+            <column name="user_id" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Adam (generated)" id="1641129964888-8">
+        <createTable tableName="skill">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="skillPK"/>
+            </column>
+            <column name="creation_date" type="date"/>
+            <column name="label" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Adam (generated)" id="1641129964888-9">
+        <createTable tableName="subject">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="subjectPK"/>
+            </column>
+            <column name="creation_date" type="date"/>
+            <column name="label" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Adam (generated)" id="1641129964888-10">
+        <createTable tableName="topic">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="topicPK"/>
+            </column>
+            <column name="creation_date" type="date"/>
+            <column name="label" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Adam (generated)" id="1641129964888-11">
+        <createTable tableName="user_extended">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_extendedPK"/>
+            </column>
+            <column name="about_me" type="VARCHAR(255)"/>
+            <column name="approver_since" type="date"/>
+            <column name="civil_status" type="VARCHAR(255)"/>
+            <column name="filesquota" type="INT"/>
+            <column name="firstchild" type="VARCHAR(255)"/>
+            <column name="fourthchild" type="VARCHAR(255)"/>
+            <column name="last_approval" type="date"/>
+            <column name="last_login" type="date"/>
+            <column name="occupation" type="VARCHAR(255)"/>
+            <column name="secondchild" type="VARCHAR(255)"/>
+            <column name="social_media" type="VARCHAR(255)"/>
+            <column name="thirdchild" type="VARCHAR(255)"/>
+            <column name="user_id" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Adam (generated)" id="1641129964888-12">
+        <createTable tableName="votes">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="votesPK"/>
+            </column>
+            <column name="resource_id" type="BIGINT"/>
+            <column name="user_id" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Adam (generated)" id="1641129964888-13">
+        <addUniqueConstraint columnNames="resource_id" constraintName="UC_FILERESOURCE_ID_COL" tableName="file"/>
+    </changeSet>
+    <changeSet author="Adam (generated)" id="1641129964888-14">
+        <addUniqueConstraint columnNames="user_id" constraintName="UC_USER_EXTENDEDUSER_ID_COL" tableName="user_extended"/>
+    </changeSet>
+    <changeSet author="Adam (generated)" id="1641129964888-15">
+        <addForeignKeyConstraint baseColumnNames="resource_id" baseTableName="favorite" constraintName="FK4gjvorokf75r8i3a8hqb55ffo" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="resource" validate="true"/>
+    </changeSet>
+    <changeSet author="Adam (generated)" id="1641129964888-16">
+        <addForeignKeyConstraint baseColumnNames="receiver_id" baseTableName="message" constraintName="FK6o6rw4ygee9d5k4q2635sr7k4" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user" validate="true"/>
+    </changeSet>
+    <changeSet author="Adam (generated)" id="1641129964888-17">
+        <addForeignKeyConstraint baseColumnNames="resource_id" baseTableName="rel_resource__topics" constraintName="FK7lr7k7f9dgl1x702prgk8jm5m" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="resource" validate="true"/>
+    </changeSet>
+    <changeSet author="Adam (generated)" id="1641129964888-18">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="notification" constraintName="FK9cjqfbjf8u01gewfjckcn2651" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user" validate="true"/>
+    </changeSet>
+    <changeSet author="Adam (generated)" id="1641129964888-19">
+        <addForeignKeyConstraint baseColumnNames="skills_id" baseTableName="rel_resource__skills" constraintName="FKa7f1ri3u1u69gi1b8adebtimr" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="skill" validate="true"/>
+    </changeSet>
+    <changeSet author="Adam (generated)" id="1641129964888-20">
+        <addForeignKeyConstraint baseColumnNames="resource_id" baseTableName="file" constraintName="FKackgn4jnj139399tdrrb9ijri" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="resource" validate="true"/>
+    </changeSet>
+    <changeSet author="Adam (generated)" id="1641129964888-21">
+        <addForeignKeyConstraint baseColumnNames="topics_id" baseTableName="rel_resource__topics" constraintName="FKeknsts8a6y0q3ghqngbycbymp" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="topic" validate="true"/>
+    </changeSet>
+    <changeSet author="Adam (generated)" id="1641129964888-22">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="favorite" constraintName="FKf8rmeulnpvc2oey5lpujroy4o" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user" validate="true"/>
+    </changeSet>
+    <changeSet author="Adam (generated)" id="1641129964888-23">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="votes" constraintName="FKfh15m3l7t7c47kbnpgw0t0ix2" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user" validate="true"/>
+    </changeSet>
+    <changeSet author="Adam (generated)" id="1641129964888-24">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="resource" constraintName="FKfkin3bv0b872v4mvxupodiro" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user" validate="true"/>
+    </changeSet>
+    <changeSet author="Adam (generated)" id="1641129964888-25">
+        <addForeignKeyConstraint baseColumnNames="resource_id" baseTableName="votes" constraintName="FKgs2ar271hhdhdlm657jiv6egd" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="resource" validate="true"/>
+    </changeSet>
+    <changeSet author="Adam (generated)" id="1641129964888-26">
+        <addForeignKeyConstraint baseColumnNames="subject_id" baseTableName="resource" constraintName="FKl8mllfer0gbkligpw4k5u3qr8" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="subject" validate="true"/>
+    </changeSet>
+    <changeSet author="Adam (generated)" id="1641129964888-27">
+        <addForeignKeyConstraint baseColumnNames="resource_id" baseTableName="rel_resource__skills" constraintName="FKohp4ld0lynccb43stqmjarr5" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="resource" validate="true"/>
+    </changeSet>
+    <changeSet author="Adam (generated)" id="1641129964888-28">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_extended" constraintName="FKqb1kwy2b3tej060khqdm6jswq" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user" validate="true"/>
+    </changeSet>
+    <changeSet author="Adam (generated)" id="1641129964888-29">
+        <addForeignKeyConstraint baseColumnNames="sender_id" baseTableName="message" constraintName="FKs6x09uvyrqh0v1jy177piba7f" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user" validate="true"/>
+    </changeSet>
+</databaseChangeLog>

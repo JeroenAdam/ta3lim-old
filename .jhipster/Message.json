@@ -1,0 +1,43 @@
+{
+  "name": "Message",
+  "fields": [
+    {
+      "fieldName": "creationDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "messageText",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "isDelivered",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "message",
+      "relationshipName": "receiver",
+      "otherEntityField": "login"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "message",
+      "relationshipName": "sender",
+      "otherEntityField": "login"
+    }
+  ],
+  "entityTableName": "message",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20220102112138"
+}
