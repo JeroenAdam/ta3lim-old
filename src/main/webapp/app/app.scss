@@ -25,12 +25,14 @@ a {
   box-sizing: border-box;
   .view-container {
     width: 100%;
-    height: calc(100% - 40px);
+    height: calc(100% - 10px);
     overflow-y: auto;
     overflow-x: hidden;
+    padding-left: 20%;
     padding: 1rem;
     .card {
       padding: 1rem;
+      border: 0px;
     }
     .view-routes {
       height: 100%;

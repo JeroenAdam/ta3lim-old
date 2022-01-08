@@ -98,21 +98,11 @@ export const ResourceUpdate = (props: RouteComponentProps<{ id: string }>) => {
         </Col>
       </Row>
       <Row className="justify-content-center">
-        <Col md="8">
+        <Col sm="8">
           {loading ? (
             <p>Loading...</p>
           ) : (
             <ValidatedForm defaultValues={defaultValues()} onSubmit={saveEntity}>
-              {!isNew ? (
-                <ValidatedField
-                  name="id"
-                  required
-                  readOnly
-                  id="resource-id"
-                  label={translate('global.field.id')}
-                  validate={{ required: true }}
-                />
-              ) : null}
               <ValidatedField
                 label={translate('ta3LimApp.resource.title')}
                 id="resource-title"
@@ -124,32 +114,13 @@ export const ResourceUpdate = (props: RouteComponentProps<{ id: string }>) => {
                 }}
               />
               <ValidatedField
-                label={translate('ta3LimApp.resource.creationDate')}
-                id="resource-creationDate"
-                name="creationDate"
-                data-cy="creationDate"
-                type="date"
-              />
-              <ValidatedField
                 label={translate('ta3LimApp.resource.description')}
                 id="resource-description"
                 name="description"
                 data-cy="description"
-                type="text"
+                type="textarea" style={{ height: 255 }} 
               />
-              <ValidatedField
-                label={translate('ta3LimApp.resource.resourceType')}
-                id="resource-resourceType"
-                name="resourceType"
-                data-cy="resourceType"
-                type="select"
-              >
-                {resourceTypeValues.map(resourceType => (
-                  <option value={resourceType} key={resourceType}>
-                    {translate('ta3LimApp.ResourceType.' + resourceType)}
-                  </option>
-                ))}
-              </ValidatedField>
+
               <ValidatedField
                 label={translate('ta3LimApp.resource.angeRage')}
                 id="resource-angeRage"
@@ -171,48 +142,26 @@ export const ResourceUpdate = (props: RouteComponentProps<{ id: string }>) => {
                 openActionLabel={translate('entity.action.open')}
               />
               <ValidatedField label={translate('ta3LimApp.resource.url')} id="resource-url" name="url" data-cy="url" type="text" />
-              <ValidatedField
-                label={translate('ta3LimApp.resource.author')}
-                id="resource-author"
-                name="author"
-                data-cy="author"
-                type="text"
-              />
-              <ValidatedField
-                label={translate('ta3LimApp.resource.lastUpdated')}
-                id="resource-lastUpdated"
-                name="lastUpdated"
-                data-cy="lastUpdated"
-                type="date"
-              />
-              <ValidatedField
-                label={translate('ta3LimApp.resource.activated')}
-                id="resource-activated"
-                name="activated"
-                data-cy="activated"
-                check
-                type="checkbox"
-              />
-              <ValidatedField label={translate('ta3LimApp.resource.views')} id="resource-views" name="views" data-cy="views" type="text" />
-              <ValidatedField label={translate('ta3LimApp.resource.votes')} id="resource-votes" name="votes" data-cy="votes" type="text" />
-              <ValidatedField
-                label={translate('ta3LimApp.resource.approvedBy')}
-                id="resource-approvedBy"
-                name="approvedBy"
-                data-cy="approvedBy"
-                type="text"
-              />
-              <ValidatedField id="resource-user" name="user" data-cy="user" label={translate('ta3LimApp.resource.user')} type="select">
-                <option value="" key="0" />
-                {users
-                  ? users.map(otherEntity => (
-                      <option value={otherEntity.id} key={otherEntity.id}>
-                        {otherEntity.login}
-                      </option>
-                    ))
-                  : null}
-              </ValidatedField>
-              <ValidatedField
+              
+              
+              <Button tag={Link} id="cancel-save" data-cy="entityCreateCancelButton" to="/resource" replace color="info">
+                <FontAwesomeIcon icon="arrow-left" />
+                &nbsp;
+                <span className="d-none d-md-inline">
+                  <Translate contentKey="entity.action.back">Back</Translate>
+                </span>
+              </Button>
+              &nbsp;
+              <Button color="primary" id="save-entity" data-cy="entityCreateSaveButton" type="submit" disabled={updating}>
+                <FontAwesomeIcon icon="save" />
+                &nbsp;
+                <Translate contentKey="entity.action.save">Save</Translate>
+              </Button>
+            </ValidatedForm>
+          )}
+        </Col>
+        <Col md="4">
+        <ValidatedField
                 id="resource-subject"
                 name="subject"
                 data-cy="subject"
@@ -229,6 +178,19 @@ export const ResourceUpdate = (props: RouteComponentProps<{ id: string }>) => {
                   : null}
               </ValidatedField>
               <ValidatedField
+                label={translate('ta3LimApp.resource.resourceType')}
+                id="resource-resourceType"
+                name="resourceType"
+                data-cy="resourceType"
+                type="select"
+              >
+                {resourceTypeValues.map(resourceType => (
+                  <option value={resourceType} key={resourceType}>
+                    {translate('ta3LimApp.ResourceType.' + resourceType)}
+                  </option>
+                ))}
+              </ValidatedField>
+              <ValidatedField
                 label={translate('ta3LimApp.resource.topics')}
                 id="resource-topics"
                 data-cy="topics"
@@ -236,7 +198,6 @@ export const ResourceUpdate = (props: RouteComponentProps<{ id: string }>) => {
                 multiple
                 name="topics"
               >
-                <option value="" key="0" />
                 {topics
                   ? topics.map(otherEntity => (
                       <option value={otherEntity.id} key={otherEntity.id}>
@@ -253,7 +214,6 @@ export const ResourceUpdate = (props: RouteComponentProps<{ id: string }>) => {
                 multiple
                 name="skills"
               >
-                <option value="" key="0" />
                 {skills
                   ? skills.map(otherEntity => (
                       <option value={otherEntity.id} key={otherEntity.id}>
@@ -262,21 +222,41 @@ export const ResourceUpdate = (props: RouteComponentProps<{ id: string }>) => {
                     ))
                   : null}
               </ValidatedField>
-              <Button tag={Link} id="cancel-save" data-cy="entityCreateCancelButton" to="/resource" replace color="info">
-                <FontAwesomeIcon icon="arrow-left" />
-                &nbsp;
-                <span className="d-none d-md-inline">
-                  <Translate contentKey="entity.action.back">Back</Translate>
-                </span>
-              </Button>
-              &nbsp;
-              <Button color="primary" id="save-entity" data-cy="entityCreateSaveButton" type="submit" disabled={updating}>
-                <FontAwesomeIcon icon="save" />
-                &nbsp;
-                <Translate contentKey="entity.action.save">Save</Translate>
-              </Button>
-            </ValidatedForm>
-          )}
+              <ValidatedField
+                label={translate('ta3LimApp.resource.author')}
+                id="resource-author"
+                name="author"
+                data-cy="author"
+                type="text"
+              />
+              {!isNew ? (                   
+              <ValidatedField
+                
+                id="resource-user"
+                name="user"
+                data-cy="user"
+                label={translate('ta3LimApp.resource.user')}
+                type="select">
+                  {users
+                  ? users.map(otherEntity => (
+                      otherEntity.id === "7ddb9efa-1112-4975-9ce1-009da61cf9b2" ? <option value={otherEntity.id} key={otherEntity.id}>
+                        {otherEntity.login} 
+                      </option> : null
+                    ))
+                  : null}
+              </ValidatedField>
+              ) : null} 
+              {isNew ? (                    
+              <ValidatedField id="resource-user" name="user" data-cy="user" label={translate('ta3LimApp.resource.user')} type="select">
+                {users
+                  ? users.map(otherEntity => (
+                    otherEntity.id === "7ddb9efa-1112-4975-9ce1-009da61cf9b2" ? <option value={otherEntity.id} key={otherEntity.id}>
+                        {otherEntity.login}
+                      </option> : null
+                    ))
+                  : null}
+              </ValidatedField>
+              ) : null} 
         </Col>
       </Row>
     </div>

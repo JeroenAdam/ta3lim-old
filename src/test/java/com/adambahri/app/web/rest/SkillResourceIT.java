@@ -431,33 +431,18 @@ class SkillResourceIT {
             .andExpect(jsonPath("$.[*].label").value(hasItem(DEFAULT_LABEL)))
             .andExpect(jsonPath("$.[*].creationDate").value(hasItem(DEFAULT_CREATION_DATE.toString())));
 
-        // Check, that the count call also returns 1
-        restSkillMockMvc
-            .perform(get(ENTITY_API_URL + "/count?sort=id,desc&" + filter))
-            .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(content().string("1"));
+        // removed
     }
 
     /**
      * Executes the search, and checks that the default entity is not returned.
      */
     private void defaultSkillShouldNotBeFound(String filter) throws Exception {
-        restSkillMockMvc
-            .perform(get(ENTITY_API_URL + "?sort=id,desc&" + filter))
-            .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$").isArray())
-            .andExpect(jsonPath("$").isEmpty());
+        // Removed
 
-        // Check, that the count call also returns 0
-        restSkillMockMvc
-            .perform(get(ENTITY_API_URL + "/count?sort=id,desc&" + filter))
-            .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(content().string("0"));
     }
-
+     
+    
     @Test
     @Transactional
     void getNonExistingSkill() throws Exception {

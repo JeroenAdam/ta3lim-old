@@ -23,12 +23,7 @@ export const ResourceDetail = (props: RouteComponentProps<{ id: string }>) => {
           <Translate contentKey="ta3LimApp.resource.detail.title">Resource</Translate>
         </h2>
         <dl className="jh-entity-details">
-          <dt>
-            <span id="id">
-              <Translate contentKey="global.field.id">ID</Translate>
-            </span>
-          </dt>
-          <dd>{resourceEntity.id}</dd>
+
           <dt>
             <span id="title">
               <Translate contentKey="ta3LimApp.resource.title">Title</Translate>
@@ -95,21 +90,9 @@ export const ResourceDetail = (props: RouteComponentProps<{ id: string }>) => {
           </dt>
           <dd>{resourceEntity.author}</dd>
           <dt>
-            <span id="lastUpdated">
-              <Translate contentKey="ta3LimApp.resource.lastUpdated">Last Updated</Translate>
-            </span>
+            <Translate contentKey="ta3LimApp.resource.user">User</Translate>
           </dt>
-          <dd>
-            {resourceEntity.lastUpdated ? (
-              <TextFormat value={resourceEntity.lastUpdated} type="date" format={APP_LOCAL_DATE_FORMAT} />
-            ) : null}
-          </dd>
-          <dt>
-            <span id="activated">
-              <Translate contentKey="ta3LimApp.resource.activated">Activated</Translate>
-            </span>
-          </dt>
-          <dd>{resourceEntity.activated ? 'true' : 'false'}</dd>
+          <dd>{resourceEntity.user ? resourceEntity.user.login : ''}</dd>
           <dt>
             <span id="views">
               <Translate contentKey="ta3LimApp.resource.views">Views</Translate>
@@ -122,16 +105,6 @@ export const ResourceDetail = (props: RouteComponentProps<{ id: string }>) => {
             </span>
           </dt>
           <dd>{resourceEntity.votes}</dd>
-          <dt>
-            <span id="approvedBy">
-              <Translate contentKey="ta3LimApp.resource.approvedBy">Approved By</Translate>
-            </span>
-          </dt>
-          <dd>{resourceEntity.approvedBy}</dd>
-          <dt>
-            <Translate contentKey="ta3LimApp.resource.user">User</Translate>
-          </dt>
-          <dd>{resourceEntity.user ? resourceEntity.user.login : ''}</dd>
           <dt>
             <Translate contentKey="ta3LimApp.resource.subject">Subject</Translate>
           </dt>
@@ -161,6 +134,16 @@ export const ResourceDetail = (props: RouteComponentProps<{ id: string }>) => {
                   </span>
                 ))
               : null}
+          </dd>
+          <dt>
+            <span id="lastUpdated">
+              <Translate contentKey="ta3LimApp.resource.lastUpdated">Last Updated</Translate>
+            </span>
+          </dt>
+          <dd>
+            {resourceEntity.lastUpdated ? (
+              <TextFormat value={resourceEntity.lastUpdated} type="date" format={APP_LOCAL_DATE_FORMAT} />
+            ) : null}
           </dd>
         </dl>
         <Button tag={Link} to="/resource" replace color="info" data-cy="entityDetailsBackButton">

@@ -11,6 +11,8 @@ import { ASC, DESC, ITEMS_PER_PAGE, SORT } from 'app/shared/util/pagination.cons
 import { overridePaginationStateWithQueryParams } from 'app/shared/util/entity-utils';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
 
+import RelativeTime from 'react-relative-time'
+
 export const Message = (props: RouteComponentProps<{ url: string }>) => {
   const dispatch = useAppDispatch();
 
@@ -164,8 +166,8 @@ export const Message = (props: RouteComponentProps<{ url: string }>) => {
           <Table responsive>
             <thead>
               <tr>
-                <th className="hand" onClick={sort('id')}>
-                  <Translate contentKey="ta3LimApp.message.id">ID</Translate> <FontAwesomeIcon icon="sort" />
+                <th>
+                  <Translate contentKey="ta3LimApp.message.sender">Sender</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
                 <th className="hand" onClick={sort('creationDate')}>
                   <Translate contentKey="ta3LimApp.message.creationDate">Creation Date</Translate> <FontAwesomeIcon icon="sort" />
@@ -179,26 +181,18 @@ export const Message = (props: RouteComponentProps<{ url: string }>) => {
                 <th>
                   <Translate contentKey="ta3LimApp.message.receiver">Receiver</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
-                <th>
-                  <Translate contentKey="ta3LimApp.message.sender">Sender</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
                 <th />
               </tr>
             </thead>
             <tbody>
               {messageList.map((message, i) => (
                 <tr key={`entity-${i}`} data-cy="entityTable">
+                  <td>{message.receiver ? message.receiver.login : ''}</td>
                   <td>
-                    <Button tag={Link} to={`${match.url}/${message.id}`} color="link" size="sm">
-                      {message.id}
-                    </Button>
-                  </td>
-                  <td>
-                    {message.creationDate ? <TextFormat type="date" value={message.creationDate} format={APP_LOCAL_DATE_FORMAT} /> : null}
+                     {message.creationDate ? <RelativeTime value={message.creationDate} titleFormat="DD/MM/YYYY" /> : null}
                   </td>
                   <td>{message.messageText}</td>
                   <td>{message.isDelivered ? 'true' : 'false'}</td>
-                  <td>{message.receiver ? message.receiver.login : ''}</td>
                   <td>{message.sender ? message.sender.login : ''}</td>
                   <td className="text-end">
                     <div className="btn-group flex-btn-group-container">

@@ -2,40 +2,40 @@
   "ta3LimApp": {
     "resource": {
       "home": {
-        "title": "Resources",
+        "title": "Ressources",
         "refreshListLabel": "Actualiser la liste",
-        "createLabel": "Créer un nouveau Resource",
-        "createOrEditLabel": "Créer ou éditer un Resource",
-        "search": "Recherche pour Resource",
-        "notFound": "Aucun Resource trouvé"
+        "createLabel": "Soumettre Ressource",
+        "createOrEditLabel": "Soumettre ou éditer un Ressource",
+        "search": "Recherche pour Ressource",
+        "notFound": "Aucun Ressource trouvé"
       },
-      "created": "Un nouveau Resource a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Resource avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Resource avec l'identifiant {{ param }} a été supprimé",
+      "created": "Un nouveau Ressource a été créé avec l'identifiant {{ param }}",
+      "updated": "La Ressource avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "La Ressource avec l'identifiant {{ param }} a été supprimé",
       "delete": {
-        "question": "Etes-vous certain de vouloir supprimer le Resource {{ id }} ?"
+        "question": "Etes-vous certain de vouloir supprimer la Ressource {{ id }} ?"
       },
       "detail": {
-        "title": "Resource"
+        "title": "Ressource"
       },
       "id": "ID",
-      "title": "Title",
-      "creationDate": "Creation Date",
+      "title": "Titre",
+      "creationDate": "Créé",
       "description": "Description",
-      "resourceType": "Resource Type",
-      "angeRage": "Ange Rage",
-      "file": "File",
+      "resourceType": "Type de Ressource",
+      "angeRage": "Tranche d'âge",
+      "file": "Fichier",
       "url": "Url",
-      "author": "Author",
-      "lastUpdated": "Last Updated",
+      "author": "Auteur",
+      "lastUpdated": "Dernière mise à jour",
       "activated": "Activated",
-      "views": "Views",
+      "views": "Vues",
       "votes": "Votes",
       "approvedBy": "Approved By",
-      "user": "User",
-      "subject": "Subject",
-      "topics": "Topics",
-      "skills": "Skills"
+      "user": "Soumetteur",
+      "subject": "Sujet",
+      "topics": "Topique",
+      "skills": "Compétence"
     }
   }
 }

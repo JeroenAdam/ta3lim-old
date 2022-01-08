@@ -7,11 +7,13 @@ import { faBook } from '@fortawesome/free-solid-svg-icons/faBook';
 import { faCloud } from '@fortawesome/free-solid-svg-icons/faCloud';
 import { faDatabase } from '@fortawesome/free-solid-svg-icons/faDatabase';
 import { faEye } from '@fortawesome/free-solid-svg-icons/faEye';
+import { faStar } from '@fortawesome/free-solid-svg-icons/faStar';
 import { faFlag } from '@fortawesome/free-solid-svg-icons/faFlag';
 import { faHeart } from '@fortawesome/free-solid-svg-icons/faHeart';
 import { faHome } from '@fortawesome/free-solid-svg-icons/faHome';
 import { faList } from '@fortawesome/free-solid-svg-icons/faList';
 import { faLock } from '@fortawesome/free-solid-svg-icons/faLock';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons/faEnvelope';
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons/faPencilAlt';
 import { faPlus } from '@fortawesome/free-solid-svg-icons/faPlus';
 import { faSave } from '@fortawesome/free-solid-svg-icons/faSave';
@@ -44,7 +46,9 @@ export const loadIcons = () => {
     faCloud,
     faCogs,
     faDatabase,
+	faEnvelope,
     faEye,
+	faStar,
     faFlag,
     faHeart,
     faHome,
