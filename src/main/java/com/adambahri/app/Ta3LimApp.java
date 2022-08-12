@@ -144,7 +144,7 @@ public class Ta3LimApp {
             }
 
             //check if admin exists and set profile info
-            User admin = userrepo.findOneByLogin("admin").isPresent() ? userrepo.findOneByLogin("admin").get() : null;
+            User admin = userrepo.findOneByLogin("admin@localhost").isPresent() ? userrepo.findOneByLogin("admin@localhost").get() : null;
             UserExtended userextended = userextendedrepo.findById(1L).isPresent() ? userextendedrepo.findById(1L).get() : null;
             if (admin != null && userextended == null) {
             	UserExtended u1 = new UserExtended();
@@ -341,10 +341,12 @@ public class Ta3LimApp {
             	Favorite f1 = new Favorite();
             	f1.setResource(r1);
             	f1.user(user);
+            	f1.setCreationDate(LocalDate.now().minus(Period.ofDays(3)));
             	favoriterepo.save(f1);
             	Favorite f2 = new Favorite();
             	f2.setResource(r2);
             	f2.user(user);
+            	f2.setCreationDate(LocalDate.now().minus(Period.ofDays(2)));
             	favoriterepo.save(f2);
             }            
 

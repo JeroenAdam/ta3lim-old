@@ -27,7 +27,7 @@ export const UserExtendedUpdate = (props: RouteComponentProps<{ id: string }>) =
   const civilStatusValues = Object.keys(CivilStatus);
   const childrenValues = Object.keys(Children);
   const handleClose = () => {
-    props.history.push('/user-extended' + props.location.search);
+    props.history.push('/resource' + props.location.search);
   };
 
   useEffect(() => {
@@ -228,7 +228,7 @@ export const UserExtendedUpdate = (props: RouteComponentProps<{ id: string }>) =
                     ))
                   : null}
               </ValidatedField>
-              <Button tag={Link} id="cancel-save" data-cy="entityCreateCancelButton" to="/user-extended" replace color="info">
+              <Button tag={Link} id="cancel-save" data-cy="entityCreateCancelButton" to="/resource" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;
                 <span className="d-none d-md-inline">

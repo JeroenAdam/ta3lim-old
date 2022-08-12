@@ -2,7 +2,12 @@ package com.adambahri.app.domain;
 
 import com.adambahri.app.domain.enumeration.AgeRange;
 import com.adambahri.app.domain.enumeration.ResourceType;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerator;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -11,6 +16,8 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
 
 /**
  * A Resource.
@@ -79,7 +86,7 @@ public class Resource implements Serializable {
 
     @ManyToOne
     private Subject subject;
-
+    
     @ManyToMany
     @JoinTable(
         name = "rel_resource__topics",
@@ -87,6 +94,7 @@ public class Resource implements Serializable {
         inverseJoinColumns = @JoinColumn(name = "topics_id")
     )
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @Field(type = FieldType.Nested, ignoreFields = {"topics"})
     @JsonIgnoreProperties(value = { "resources" }, allowSetters = true)
     private Set<Topic> topics = new HashSet<>();
 
@@ -97,6 +105,7 @@ public class Resource implements Serializable {
         inverseJoinColumns = @JoinColumn(name = "skills_id")
     )
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @Field(type = FieldType.Nested, ignoreFields = {"skills"})
     @JsonIgnoreProperties(value = { "resources" }, allowSetters = true)
     private Set<Skill> skills = new HashSet<>();
 

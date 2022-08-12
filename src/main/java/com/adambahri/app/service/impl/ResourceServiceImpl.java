@@ -47,9 +47,7 @@ public class ResourceServiceImpl implements ResourceService {
         Resource resource = resourceMapper.toEntity(resourceDTO);
         resource = resourceRepository.save(resource);
         ResourceDTO result = resourceMapper.toDto(resource);
-        resource.setId(result.getId());
         resourceSearchRepository.save(resource);
-        /* resourceSearchRepository.save(resource); */
         return result;
     }
 

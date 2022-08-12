@@ -77,7 +77,7 @@ public class FavoriteDTO implements Serializable {
             "id=" + getId() +
             ", creationDate='" + getCreationDate() + "'" +
             ", user=" + getUser() +
-            ", resource=" + getResource() +
+            ", resource=" + getResource().getTitle() +
             "}";
     }
 }

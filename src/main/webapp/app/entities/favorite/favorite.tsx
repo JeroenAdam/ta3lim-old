@@ -11,6 +11,8 @@ import { ASC, DESC, ITEMS_PER_PAGE, SORT } from 'app/shared/util/pagination.cons
 import { overridePaginationStateWithQueryParams } from 'app/shared/util/entity-utils';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
 
+import RelativeTime from 'react-relative-time'
+
 export const Favorite = (props: RouteComponentProps<{ url: string }>) => {
   const dispatch = useAppDispatch();
 
@@ -164,14 +166,8 @@ export const Favorite = (props: RouteComponentProps<{ url: string }>) => {
           <Table responsive>
             <thead>
               <tr>
-                <th className="hand" onClick={sort('id')}>
-                  <Translate contentKey="ta3LimApp.favorite.id">ID</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
                 <th className="hand" onClick={sort('creationDate')}>
                   <Translate contentKey="ta3LimApp.favorite.creationDate">Creation Date</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
-                <th>
-                  <Translate contentKey="ta3LimApp.favorite.user">User</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
                 <th>
                   <Translate contentKey="ta3LimApp.favorite.resource">Resource</Translate> <FontAwesomeIcon icon="sort" />
@@ -183,35 +179,11 @@ export const Favorite = (props: RouteComponentProps<{ url: string }>) => {
               {favoriteList.map((favorite, i) => (
                 <tr key={`entity-${i}`} data-cy="entityTable">
                   <td>
-                    <Button tag={Link} to={`${match.url}/${favorite.id}`} color="link" size="sm">
-                      {favorite.id}
-                    </Button>
+                  {favorite.creationDate ? <RelativeTime value={favorite.creationDate} titleFormat="DD/MM/YYYY" /> : null}
                   </td>
-                  <td>
-                    {favorite.creationDate ? <TextFormat type="date" value={favorite.creationDate} format={APP_LOCAL_DATE_FORMAT} /> : null}
-                  </td>
-                  <td>{favorite.user ? favorite.user.login : ''}</td>
-                  <td>{favorite.resource ? <Link to={`resource/${favorite.resource.id}`}>{favorite.resource.id}</Link> : ''}</td>
+                  <td>{favorite.resource ? <Link to={`resource/${favorite.resource.id}`}>{favorite.resource.title}</Link> : ''}</td>
                   <td className="text-end">
                     <div className="btn-group flex-btn-group-container">
-                      <Button tag={Link} to={`${match.url}/${favorite.id}`} color="info" size="sm" data-cy="entityDetailsButton">
-                        <FontAwesomeIcon icon="eye" />{' '}
-                        <span className="d-none d-md-inline">
-                          <Translate contentKey="entity.action.view">View</Translate>
-                        </span>
-                      </Button>
-                      <Button
-                        tag={Link}
-                        to={`${match.url}/${favorite.id}/edit?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
-                        color="primary"
-                        size="sm"
-                        data-cy="entityEditButton"
-                      >
-                        <FontAwesomeIcon icon="pencil-alt" />{' '}
-                        <span className="d-none d-md-inline">
-                          <Translate contentKey="entity.action.edit">Edit</Translate>
-                        </span>
-                      </Button>
                       <Button
                         tag={Link}
                         to={`${match.url}/${favorite.id}/delete?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}

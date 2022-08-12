@@ -134,7 +134,7 @@ spring:
         registration:
           oidc:
             client-id: web_app
-            client-secret: 
+            client-secret: 05fbb8f1-b8fa-4a40-bfb9-e4bbfff6684d
             scope: openid,profile,email
 
 server:

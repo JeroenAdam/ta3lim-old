@@ -31,7 +31,7 @@ public class Favorite implements Serializable {
 
     @ManyToOne
     @JsonIgnoreProperties(value = { "user", "subject", "topics", "skills" }, allowSetters = true)
-    private Resource resource;
+    private Resource resource;    
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
